@@ -36,6 +36,37 @@ discord: # The Discord Integration is an experimental feature, report all proble
   # This enables /stafflist command on Discord, leave "none" to disable this feature.
   stafflist_channel_id: ""
 
+  # Global chat bridge (public Minecraft chat <-> Discord channel).
+  # Uses the same bot token above. Remember to enable "Message Content Intent"
+  # for your bot in the Discord Developer Portal.
+  globalchat:
+
+    # Toggle the global chat bridge.
+    enabled: false
+
+    # ID of the Discord channel linked to the public Minecraft chat.
+    channel_id: ""
+
+    # Send Minecraft chat messages to Discord.
+    minecraft_to_discord: true
+
+    # Send Discord messages to the Minecraft chat.
+    discord_to_minecraft: true
+
+    # Send join/quit messages to Discord.
+    join_quit_messages: true
+
+    # Format of the message sent to Discord. Placeholders: %user%, %displayname%, %message%.
+    to_discord_format: "**%user%** » %message%"
+    join_format: ":green_circle: **%user%** joined the server."
+    quit_format: ":red_circle: **%user%** left the server."
+
+    # Format of the message sent to Minecraft. Placeholders: %user%, %username% (server nickname), %message%.
+    to_minecraft_format: "&7[&9Discord&7] &b%username% &8» &f%message%"
+
+    # Allow Discord users to use color codes (&a, &l...) in Minecraft.
+    allow_color_codes: false
+
   # NOTE: If you do not want to use a certain chat, disable it from modules.
   # You will not have to enter any channel ids if you deactivate them.
 

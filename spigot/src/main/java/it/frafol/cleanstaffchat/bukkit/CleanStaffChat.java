@@ -13,6 +13,7 @@ import it.frafol.cleanstaffchat.bukkit.objects.TextFile;
 import it.frafol.cleanstaffchat.bukkit.staffchat.commands.CommandBase;
 import it.frafol.cleanstaffchat.bukkit.staffchat.commands.impl.DebugCommand;
 import it.frafol.cleanstaffchat.bukkit.staffchat.commands.impl.ReloadCommand;
+import it.frafol.cleanstaffchat.bukkit.globalchat.DiscordBridgeListener;
 import it.frafol.cleanstaffchat.bukkit.staffchat.listeners.ChatListener;
 import it.frafol.cleanstaffchat.bukkit.staffchat.listeners.JoinListener;
 import it.frafol.cleanstaffchat.bukkit.staffchat.listeners.ListChatListener;
@@ -242,6 +243,15 @@ public class CleanStaffChat extends JavaPlugin {
         if (SpigotConfig.MUTECHAT_MODULE.get(Boolean.class)) {
             registerMuteChatCommands();
             getServer().getPluginManager().registerEvents(new it.frafol.cleanstaffchat.bukkit.general.listeners.ChatListener(this), this);
+        }
+
+        if (SpigotDiscordConfig.DISCORD_ENABLED.get(Boolean.class)
+                && Boolean.TRUE.equals(SpigotDiscordConfig.GLOBALCHAT_ENABLED.get(Boolean.class))
+                && jda != null) {
+            DiscordBridgeListener bridge = new DiscordBridgeListener(this);
+            getServer().getPluginManager().registerEvents(bridge, this);
+            jda.addEventListener(bridge);
+            getLogger().info("Global chat Discord bridge enabled!");
         }
 
         if (SpigotConfig.STATS.get(Boolean.class) && !getDescription().getVersion().contains("alpha")) {

@@ -25,7 +25,18 @@ public enum SpigotDiscordConfig {
     STAFF_CHANNEL_ID("discord.staffchat_channel_id"),
     DONOR_CHANNEL_ID("discord.donorchat_channel_id"),
     STAFFLIST_CHANNEL_ID("discord.stafflist_channel_id"),
-    ADMIN_CHANNEL_ID("discord.adminchat_channel_id");
+    ADMIN_CHANNEL_ID("discord.adminchat_channel_id"),
+
+    GLOBALCHAT_ENABLED("discord.globalchat.enabled"),
+    GLOBALCHAT_CHANNEL_ID("discord.globalchat.channel_id"),
+    GLOBALCHAT_MC_TO_DISCORD("discord.globalchat.minecraft_to_discord"),
+    GLOBALCHAT_DISCORD_TO_MC("discord.globalchat.discord_to_minecraft"),
+    GLOBALCHAT_JOIN_QUIT("discord.globalchat.join_quit_messages"),
+    GLOBALCHAT_TO_DISCORD_FORMAT("discord.globalchat.to_discord_format"),
+    GLOBALCHAT_JOIN_FORMAT("discord.globalchat.join_format"),
+    GLOBALCHAT_QUIT_FORMAT("discord.globalchat.quit_format"),
+    GLOBALCHAT_TO_MC_FORMAT("discord.globalchat.to_minecraft_format"),
+    GLOBALCHAT_ALLOW_COLORS("discord.globalchat.allow_color_codes");
 
     private final String path;
     public static final CleanStaffChat instance = CleanStaffChat.getInstance();
